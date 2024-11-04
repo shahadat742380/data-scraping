@@ -23,7 +23,7 @@ chapter.post("/", async (c) => {
 
   const chapters: Chapter[] = [];
 
-  $(".r-chapter a").each((index, element) => {
+  const ab = $(".r-chapter a").each((index, element) => {
     const chapterTitle = $(element).text().trim();
     const chapterUrl = $(element).attr("href");
 
@@ -40,7 +40,6 @@ chapter.post("/", async (c) => {
       const chapterPage = cheerio.load(chapterResponse.data);
       const verseElements = chapterPage(".r-verse");
 
-      // @ts-ignore
       for (const verseElement of verseElements) {
         const subChapterLink = chapterPage(verseElement)
           .find("dt a")
